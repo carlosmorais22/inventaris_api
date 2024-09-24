@@ -26,14 +26,11 @@ class Usuario(db.Model):
     def _repr_(self):
         return f'<Usuario {self.nome}>'
 
-# from .accounts.urls import *
-# from .situacao.urls import *
-# from .bem.urls import *
-# from .conta.urls import *
-# from .estado.urls import *
-# from .inventario.urls import *
-
-from .view import situacao_view
+from .view import bem_view
+from .view import conta_view
+from .view import estado_view
+from .view import inventory_view
+from .view import situation_view
 
 # Rota para teste de conexão
 @app.route('/')

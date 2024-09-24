@@ -13,12 +13,10 @@ from .models import Account
 def list_all_accounts_controller():
     try:
         accounts = Account.query.all()
-        print(accounts)
     except UnicodeDecodeError as e:
         return  f"Erro: --> {e}"
     response = []
     for account in accounts: response.append(account.toDict())
-    print(response)
     return jsonify(response)
     # return "ASDFGHJKL"
 

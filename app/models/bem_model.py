@@ -2,7 +2,7 @@ from sqlalchemy import inspect
 
 from ..app import db # from __init__.py
 
-class Bem(db.Model):
+class BemModel(db.Model):
     __tablename__ = 'bem'
     __table_args__ = {'schema': 'inventaris'}
 
@@ -19,9 +19,21 @@ class Bem(db.Model):
     data_aquisicao = db.Column(db.DateTime, nullable=True)
     ativo = db.Column(db.SmallInteger, nullable=False)
 
-    # How to serialize SqlAlchemy PostgreSQL Query to JSON => https://stackoverflow.com/a/46180522
-    def toDict(self):
-        return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }
+    def __init__(self, Bem):
+        self.Bem = Bem
 
-    def __repr__(self):
-        return "<%r>" % self.descricao
+    def to_dict(self):
+        return {
+            "id" : self.id, 
+            "setor" : self.setor,
+            "tombo" : self.tombo,
+            "descricao" : self.descricao,
+            "conta" : self.conta,
+            "estado" : self.estado,
+            "valor" : self.valor,
+            "valor_remanescente" : self.valor_remanescente,
+            "numero_serie" : self.numero_serie,
+            "data" : self.data,
+            "data_aquisicao" : self.data_aquisicao,
+            "ativo" : self.ativo
+        }

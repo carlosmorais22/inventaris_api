@@ -1,13 +1,13 @@
 from ..app import ma
-from ..models.situacao_model import SituacaoModel
+from ..models.situation_model import SituationModel
 
 from marshmallow import fields
 
-class SituacaoSchema(ma.SQLAlchemyAutoSchema):
+class SituationSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
 
-        model = SituacaoModel
+        model = SituationModel
         load_instance = True
         include_fk = True
 

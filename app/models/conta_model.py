@@ -2,7 +2,7 @@ from sqlalchemy import inspect
 
 from ..app import db # from __init__.py
 
-class Conta(db.Model):
+class ContaModel(db.Model):
     __tablename__ = 'conta'
     __table_args__ = {'schema': 'inventaris'}
 
@@ -12,9 +12,14 @@ class Conta(db.Model):
     vida_util = db.Column(db.BigInteger, nullable=True)
     ativo = db.Column(db.Boolean, nullable=False)
 
-    # How to serialize SqlAlchemy PostgreSQL Query to JSON => https://stackoverflow.com/a/46180522
-    def toDict(self):
-        return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }
+    def __init__(self, Conta):
+        self.Conta = Conta
 
-    def __repr__(self):
-        return "<%r>" % self.descricao
+    def to_dict(self):
+        return {
+            "id" : self.id, 
+            "descricao" : self.descricao,
+            "tem_numero_serie" : self.tem_numero_serie,
+            "vida_util" : self.vida_util,
+            "ativo" : self.ativo
+        }

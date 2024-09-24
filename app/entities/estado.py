@@ -1,4 +1,4 @@
-class Situacao():
+class Estado():
 
     def __init__(self, descricao, id=None):
         self.__id = id
@@ -17,5 +17,5 @@ class Situacao():
         return self.__descricao
 
     @descricao.setter
-    def cpf(self, descricao):
+    def descricao(self, descricao):
         self.__descricao = descricao
