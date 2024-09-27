@@ -11,18 +11,18 @@ from ..schemas.inventory_schema import InventorySchema
 from sqlalchemy import Boolean
 from sqlalchemy import TypeDecorator
 
-class LiberalBoolean(TypeDecorator):
-    impl = Boolean
+# class LiberalBoolean(TypeDecorator):
+#     impl = Boolean
 
-    def process_bind_param(self, value):
+#     def process_bind_param(self, value):
 
-        if value is not None:
-            if isinstance(value, tuple):
-                value = value[0]
-            if isinstance(value,bool):
-                return value
-            value = bool(int(value))
-        return value
+#         if value is not None:
+#             if isinstance(value, tuple):
+#                 value = value[0]
+#             if isinstance(value,bool):
+#                 return value
+#             value = bool(int(value))
+#         return value
     
 class ListCreateInventorys(Resource):
     def get(self):
@@ -46,11 +46,11 @@ class ListCreateInventorys(Resource):
                             bem                 = request.json['bem'],
                             estado              = request.json['estado'],
                             situacao            = request.json['situacao'],
-                            plaqueta            = 1,
+                            plaqueta            = request.json['plaqueta'],
                             observacao          = request.json['observacao'],
                             cadastrado_por      = request.json['cadastrado_por'],
                             situacao_observacao = request.json['situacao_observacao'],
-                            tem_numero_serie    = 1,
+                            tem_numero_serie    = request.json['tem_numero_serie'],
                             numero_serie        = request.json['numero_serie'],
                         )
             
@@ -64,5 +64,21 @@ class ListCreateInventorys(Resource):
             print(msg_error)
             return make_response(jsonify(msg_error), 400,)
 
+class RetrieveInventorys(Resource):
+    def get(self, setor, texto):
+        lista = inventory_service.list()
+
+        resultado = []
+
+        print("#################################")
+
+        for item in lista:
+            print(item)
+            resultado.append(item.to_dict())
+        print("#################################")
+            
+        return make_response(jsonify(resultado), 201)
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api.add_resource(ListCreateInventorys, '/api/inventory')
+api.add_resource(RetrieveInventorys, '/api/inventory/<string:setor>/<string:texto>')

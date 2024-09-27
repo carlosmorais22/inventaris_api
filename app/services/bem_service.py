@@ -16,3 +16,8 @@ def list():
 def retrieve(id):
     response = BemModel.query.get(id).toDict()
     return jsonify(response)
+
+def retrievePorSetor(texto):
+    item = BemModel.query.filter_by(setor=texto)
+    return item
+

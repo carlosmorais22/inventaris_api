@@ -16,3 +16,10 @@ def list():
 def retrieve(id):
     response = SituationModel.query.get(id).toDict()
     return jsonify(response)
+
+def create(item):
+    model = SituationModel(item)
+
+    db.session.add(model)
+    db.session.commit()
+    return model

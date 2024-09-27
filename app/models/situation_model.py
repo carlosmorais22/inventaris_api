@@ -9,8 +9,9 @@ class SituationModel(db.Model):
     id        = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     descricao = db.Column(db.String(50), nullable=False, unique=True)
 
-    def __init__(self, Situation):
-        self.Situation = Situation
+    def __init__(self, situation):
+        self.id=situation.id,
+        self.descricao=situation.descricao
 
     def to_dict(self):
         return {
