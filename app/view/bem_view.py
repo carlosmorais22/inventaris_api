@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 from ..services import bem_service
 
-class ListBens(Resource):
+class ListarBem(Resource):
     def get(self):
         lista = bem_service.list()
 
@@ -16,10 +16,13 @@ class ListBens(Resource):
             
         return make_response(jsonify(resultado), 201)
     
-class RetrieveBens(Resource):
-    def get(self, setor, texto):
-        print(texto.upper())
-        lista = bem_service.retrievePorSetor(texto.upper())
+class RecuperarBem(Resource):
+    def get(self, tipo, texto):
+        lista = bem_service.recuperarPorSetor(texto.upper())
+        if tipo=="tombo":
+            lista = bem_service.recuperarPorTombo(texto.upper())
+        if tipo=="descricao":
+            lista = bem_service.recuperarPorDescricao(texto.upper())
 
         resultado = []
 
@@ -33,5 +36,5 @@ class RetrieveBens(Resource):
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-api.add_resource(ListBens, '/api/bem')
-api.add_resource(RetrieveBens, '/api/bem/<string:setor>/<string:texto>')
+api.add_resource(ListarBem, '/api/bem')
+api.add_resource(RecuperarBem, '/api/bem/<string:tipo>/<string:texto>')

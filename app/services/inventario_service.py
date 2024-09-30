@@ -2,15 +2,15 @@ from flask import request, jsonify
 import uuid
 
 from ..app import db
-from ..models.inventory_model import InventoryModel
+from ..models.inventario_model import InventarioModel
 
-def retrieve(id):
-    response = InventoryModel.query.get(id).toDict()
+def recuperar(id):
+    response = InventarioModel.query.get(id).toDict()
     return jsonify(response)
 
 def list():
     try:
-        lista = InventoryModel.query.all()
+        lista = InventarioModel.query.all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:
@@ -18,7 +18,7 @@ def list():
     return lista
 
 def create(item):
-    model = InventoryModel(item)
+    model = InventarioModel(item)
 
     db.session.add(model)
     db.session.commit()

@@ -1,4 +1,4 @@
-class Inventory():
+class Inventario():
 
     def __init__(self, ano, bem, estado, situacao, plaqueta, observacao, cadastrado_por, situacao_observacao, tem_numero_serie, numero_serie, created_at=None, updated_at=None, deleted_at=None, id=None):
         self.__id = id

@@ -6,7 +6,7 @@ from flask_restful import Api
 app = Flask(__name__) 
 
 # string de conexão com o banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:Admin@localhost/sigpat'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:159753@localhost/sigpat'
 
 # Evita warnings desnecessários
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,6 +17,7 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 api = Api(app)    # app.run(host='0.0.0.0', port=5001)
+
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,8 +30,10 @@ class Usuario(db.Model):
 from .view import bem_view
 from .view import conta_view
 from .view import estado_view
-from .view import inventory_view
-from .view import situation_view
+from .view import inventario_view
+from .view import situacao_view
+from .view import ano_view
+from .view import setor_view
 
 # Rota para teste de conexão
 @app.route('/')

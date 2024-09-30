@@ -2,46 +2,26 @@ from ..app import app, api
 from flask_restful import Resource
 from flask import make_response, jsonify, request
 from flask_cors import CORS
-from datetime import datetime
 
-from ..entities.inventory import Inventory
-from ..services import inventory_service
-from ..schemas.inventory_schema import InventorySchema
+from ..entities.inventario import Inventario
+from ..services import inventario_service
+from ..schemas.inventario_schema import InventarioSchema
 
-from sqlalchemy import Boolean
-from sqlalchemy import TypeDecorator
 
-# class LiberalBoolean(TypeDecorator):
-#     impl = Boolean
-
-#     def process_bind_param(self, value):
-
-#         if value is not None:
-#             if isinstance(value, tuple):
-#                 value = value[0]
-#             if isinstance(value,bool):
-#                 return value
-#             value = bool(int(value))
-#         return value
-    
-class ListCreateInventorys(Resource):
+class ListarIncluirInventario(Resource):
     def get(self):
-        lista = inventory_service.list()
+        lista = inventario_service.list()
 
         resultado = []
 
         for item in lista:
             resultado.append(item.to_dict())
-            
+
         return make_response(jsonify(resultado), 201)
 
-        
     def post(self):
         try:
-            curr_dt = datetime.now()
-            id = int(round(curr_dt.timestamp()))
-
-            new = Inventory(
+            new = Inventario(
                             ano                 = request.json['ano'],
                             bem                 = request.json['bem'],
                             estado              = request.json['estado'],
@@ -54,8 +34,8 @@ class ListCreateInventorys(Resource):
                             numero_serie        = request.json['numero_serie'],
                         )
             
-            resultado = inventory_service.create(new)
-            schema = InventorySchema()
+            resultado = inventario_service.create(new)
+            schema = InventarioSchema()
             return make_response(schema.jsonify(resultado), 200)
 
 
@@ -64,9 +44,9 @@ class ListCreateInventorys(Resource):
             print(msg_error)
             return make_response(jsonify(msg_error), 400,)
 
-class RetrieveInventorys(Resource):
+class RecuperarInventario(Resource):
     def get(self, setor, texto):
-        lista = inventory_service.list()
+        lista = inventario_service.list()
 
         resultado = []
 
@@ -80,5 +60,5 @@ class RetrieveInventorys(Resource):
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-api.add_resource(ListCreateInventorys, '/api/inventory')
-api.add_resource(RetrieveInventorys, '/api/inventory/<string:setor>/<string:texto>')
+api.add_resource(ListarIncluirInventario, '/api/inventario')
+api.add_resource(RecuperarInventario, '/api/inventario/<string:setor>/<string:texto>')

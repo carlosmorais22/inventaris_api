@@ -38,7 +38,7 @@ def create_account_controller():
     response = Account.query.get(id).toDict()
     return jsonify(response)
 
-def retrieve_account_controller(account_id):
+def recuperar_account_controller(account_id):
     response = Account.query.get(account_id).toDict()
     return jsonify(response)
 

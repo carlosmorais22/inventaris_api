@@ -3,7 +3,7 @@ from datetime import datetime
 
 from ..app import db # from __init__.py
 
-class InventoryModel(db.Model):
+class InventarioModel(db.Model):
     __tablename__ = 'inventario'
     __table_args__ = {'schema': 'inventaris'}
 
@@ -25,17 +25,17 @@ class InventoryModel(db.Model):
     tem_numero_serie = db.Column(db.SmallInteger, nullable=False, server_default="false")
     numero_serie = db.Column(db.String, nullable=True)
 
-    def __init__(self, inventory):
-        self.ano=inventory.ano,
-        self.bem=inventory.bem,
-        self.estado=inventory.estado,
-        self.situacao=inventory.situacao,
-        self.plaqueta=inventory.plaqueta,
-        self.observacao=inventory.observacao,
-        self.cadastrado_por=inventory.cadastrado_por,
-        self.situacao_observacao=inventory.situacao_observacao,
-        self.tem_numero_serie=inventory.tem_numero_serie,
-        self.numero_serie=inventory.numero_serie
+    def __init__(self, inventario):
+        self.ano=inventario.ano,
+        self.bem=inventario.bem,
+        self.estado=inventario.estado,
+        self.situacao=inventario.situacao,
+        self.plaqueta=inventario.plaqueta,
+        self.observacao=inventario.observacao,
+        self.cadastrado_por=inventario.cadastrado_por,
+        self.situacao_observacao=inventario.situacao_observacao,
+        self.tem_numero_serie=inventario.tem_numero_serie,
+        self.numero_serie=inventario.numero_serie
 
     def to_dict(self):
         return {

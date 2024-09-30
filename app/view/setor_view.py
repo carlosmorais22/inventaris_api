@@ -3,11 +3,11 @@ from flask_restful import Resource
 from flask import make_response, jsonify
 from flask_cors import CORS
 
-from ..services import conta_service
+from ..services import setor_service
 
-class ListrConta(Resource):
+class ListrSetor(Resource):
     def get(self):
-        lista = conta_service.list()
+        lista = setor_service.list()
 
         resultado = []
 
@@ -17,4 +17,4 @@ class ListrConta(Resource):
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-api.add_resource(ListrConta, '/api/conta')
+api.add_resource(ListrSetor, '/api/setor')

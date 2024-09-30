@@ -1,13 +1,13 @@
 from ..app import ma
-from ..models.inventory_model import InventoryModel
+from ..models.inventario_model import InventarioModel
 
 from marshmallow import fields
 
-class InventorySchema(ma.SQLAlchemyAutoSchema):
+class InventarioSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
 
-        model = InventoryModel
+        model = InventarioModel
         load_instance = True
         include_fk = True
 

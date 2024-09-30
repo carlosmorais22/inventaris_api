@@ -13,6 +13,6 @@ def list():
         return  f"Erro: {e}"
     return lista
 
-def retrieve(id):
+def recuperar(id):
     response = ContaModel.query.get(id).toDict()
     return jsonify(response)

@@ -1,4 +1,4 @@
-class Situation():
+class Situacao():
 
     def __init__(self, descricao, status, id=None):
         self.__id = id

@@ -3,6 +3,7 @@ import uuid
 
 from ..app import db
 from ..models.bem_model import BemModel
+from ..entities.bem import Bem
 
 def list():
     try:
@@ -13,11 +14,22 @@ def list():
         return  f"Erro: {e}"
     return lista
 
-def retrieve(id):
+def recuperar(id):
     response = BemModel.query.get(id).toDict()
     return jsonify(response)
 
-def retrievePorSetor(texto):
-    item = BemModel.query.filter_by(setor=texto)
-    return item
+def recuperarPorSetor(texto):
+    search = "%{}%".format(texto)
+    print(search)
+    return BemModel.query.filter(BemModel.setor.ilike(search))
+
+def recuperarPorTombo(texto):
+    search = "%{}%".format(texto)
+    print(search)
+    return BemModel.query.filter(BemModel.tombo.ilike(search))
+
+def recuperarPorDescricao(texto):
+    search = "%{}%".format(texto)
+    print(search)
+    return BemModel.query.filter(BemModel.descricao.ilike(search))
 

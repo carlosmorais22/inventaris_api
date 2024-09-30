@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 from ..services import estado_service
 
-class ListAllEstados(Resource):
+class ListarEstado(Resource):
     def get(self):
         lista = estado_service.list()
 
@@ -17,4 +17,4 @@ class ListAllEstados(Resource):
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-api.add_resource(ListAllEstados, '/api/estado')
+api.add_resource(ListarEstado, '/api/estado')

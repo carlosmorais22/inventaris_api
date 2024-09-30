@@ -1,12 +1,9 @@
-from flask import request, jsonify
-import uuid
-
-from ..app import db
-from ..models.estado_model import EstadoModel
+from flask import jsonify
+from ..models.setor_model import SetorModel
 
 def list():
     try:
-        lista = EstadoModel.query.all()
+        lista = SetorModel.query.all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:
@@ -14,5 +11,5 @@ def list():
     return lista
 
 def recuperar(id):
-    response = EstadoModel.query.get(id).toDict()
+    response = SetorModel.query.get(id).toDict()
     return jsonify(response)
