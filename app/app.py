@@ -2,11 +2,26 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
+import urllib.parse
+
 
 app = Flask(__name__) 
 
 # string de conexão com o banco de dados
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:159753@localhost/sigpat'
+host = 'testes.patrimonio.uerr.edu.br'
+usuario = 'sigpat'
+senha = '@@sigp@t200'
+database = 'sigpat'
+# host = 'localhost'
+# usuario = 'sigpat'
+# usuario = 'postgres'
+# senha = 'Admin'
+urllib.parse.quote_plus(usuario)
+urllib.parse.quote_plus(senha)
+
+conexao_banco = "postgresql+psycopg2://{}:{}@{}/{}"
+conexao_banco = conexao_banco.format(urllib.parse.quote_plus(usuario),urllib.parse.quote_plus(senha),host,database)
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao_banco # "postgresql+psycopg2://postgres:Admin@localhost/sigpat"
 
 # Evita warnings desnecessários
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
