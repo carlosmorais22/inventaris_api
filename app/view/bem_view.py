@@ -29,9 +29,6 @@ class RecuperarBem(Resource):
 
         for item in lista:
             resultado.append(item.to_dict())
-        print("#################################")
-        print(len(resultado))
-        print("#################################")
             
         return make_response(jsonify(resultado), 201)
 

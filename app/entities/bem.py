@@ -1,6 +1,6 @@
 class Bem():
 
-    def __init__(self, descricao, setor, tombo, conta, estado, valor, valor_remanescente, numero_serie, data, data_aquisicao, ativo, id=None):
+    def __init__(self, descricao, setor, tombo, conta, estado, estado_descricao, valor, valor_remanescente, numero_serie, data, data_aquisicao, ativo, id=None):
 
         self.__id = id
         self.__setor = setor
@@ -8,6 +8,7 @@ class Bem():
         self.__descricao = descricao
         self.__conta = conta
         self.__estado = estado
+        self.__estado_descricao = estado_descricao
         self.__valor = valor
         self.__valor_remanescente = valor_remanescente
         self.__numero_serie = numero_serie
@@ -62,6 +63,14 @@ class Bem():
     @estado.setter
     def estado(self, estado):
         self.__estado = estado
+
+    @property
+    def estado_descricao(self):
+        return self.__estado_descricao
+
+    @estado_descricao.setter
+    def estado_descricao(self, estado_descricao):
+        self.__estado_descricao = estado_descricao
 
     @property
     def valor(self):

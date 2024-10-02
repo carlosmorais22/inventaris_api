@@ -12,6 +12,7 @@ class BemModel(db.Model):
     descricao = db.Column(db.String, nullable=False)
     conta = db.Column(db.String(12), nullable=False)
     estado = db.Column(db.String(7), nullable=False)
+    estado_descricao = db.Column(db.String(7), nullable=False)
     valor = db.Column(db.Numeric(12,2), nullable=False)
     valor_remanescente = db.Column(db.Numeric(12,4), nullable=True)
     numero_serie = db.Column(db.String(30), nullable=False, unique=True)
@@ -30,6 +31,7 @@ class BemModel(db.Model):
             "descricao" : self.descricao,
             "conta" : self.conta,
             "estado" : self.estado,
+            "estado_descricao" : self.estado_descricao,
             "valor" : self.valor,
             "valor_remanescente" : self.valor_remanescente,
             "numero_serie" : self.numero_serie,

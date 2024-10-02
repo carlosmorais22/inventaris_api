@@ -20,16 +20,13 @@ def recuperar(id):
 
 def recuperarPorSetor(texto):
     search = "%{}%".format(texto)
-    print(search)
     return BemModel.query.filter(BemModel.setor.ilike(search))
 
 def recuperarPorTombo(texto):
     search = "%{}%".format(texto)
-    print(search)
     return BemModel.query.filter(BemModel.tombo.ilike(search))
 
 def recuperarPorDescricao(texto):
     search = "%{}%".format(texto)
-    print(search)
     return BemModel.query.filter(BemModel.descricao.ilike(search))
 

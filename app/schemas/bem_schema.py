@@ -16,11 +16,10 @@ class BemSchema(ma.SQLAlchemyAutoSchema):
         descricao = fields.String()
         conta = fields.String()
         estado = fields.String()
+        estado_descricao = fields.String()
         valor = fields.Numeric()
         valor_remanescente = fields.Numeric()
         numero_serie = fields.String()
         data = fields.DateTime()
         data_aquisicao = fields.DateTime()
         ativo = fields.Integer()
-
-
