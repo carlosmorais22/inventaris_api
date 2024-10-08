@@ -4,7 +4,6 @@ from flask_marshmallow import Marshmallow
 from flask_restful import Api
 import urllib.parse
 
-
 app = Flask(__name__) 
 
 # string de conexão com o banco de dados
@@ -33,7 +32,6 @@ ma = Marshmallow(app)
 
 api = Api(app)    # app.run(host='0.0.0.0', port=5001)
 
-
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(80), nullable=False)
@@ -51,9 +49,9 @@ from .view import ano_view
 from .view import setor_view
 
 # Rota para teste de conexão
-@app.route('/')
-def index():
-    return 'Conectado!'
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Olá carinha da UERR 007</h1>"
 
-if __name__ == '_main_':
-    app.run(host="0.0.0.0",debug=True)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

@@ -23,3 +23,4 @@ class BemSchema(ma.SQLAlchemyAutoSchema):
         data = fields.DateTime()
         data_aquisicao = fields.DateTime()
         ativo = fields.Integer()
+        inventariado = fields.Boolean()
