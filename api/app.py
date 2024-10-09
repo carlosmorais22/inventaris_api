@@ -47,6 +47,7 @@ from .view import inventario_view
 from .view import situacao_view
 from .view import ano_view
 from .view import setor_view
+from .view import usuario_view
 
 # Rota para teste de conexão
 @app.route("/")
