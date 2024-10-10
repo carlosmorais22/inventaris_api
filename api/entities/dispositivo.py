@@ -1,12 +1,13 @@
-class Usuario():
+class Dispositivo():
 
-    def __init__(self, id, nome, cpf, modelo, fabricante, status):
+    def __init__(self, id, nome, cpf, modelo, fabricante, status, is_adm):
         self.__id = id
         self.__nome = nome
         self.__cpf = cpf
         self.__modelo = modelo
         self.__fabricante = fabricante
         self.__status = status
+        self.__is_adm = is_adm
 
     @property
     def id(self):
@@ -55,3 +56,11 @@ class Usuario():
     @status.setter
     def status(self, status):
         self.__status = status
+
+    @property
+    def is_adm(self):
+        return self.__is_adm
+
+    @is_adm.setter
+    def is_adm(self, is_adm):
+        self.__is_adm = is_adm

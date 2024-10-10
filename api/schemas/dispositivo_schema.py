@@ -1,13 +1,13 @@
 from ..app import ma
-from ..models.usuario_model import UsuarioModel
+from ..models.dispositivo_model import DispositivoModel
 
 from marshmallow import fields
 
-class UsuarioSchema(ma.SQLAlchemyAutoSchema):
+class DispositivoSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
 
-        model = UsuarioModel
+        model = DispositivoModel
         load_instance = True
         include_fk = True
 
@@ -17,3 +17,4 @@ class UsuarioSchema(ma.SQLAlchemyAutoSchema):
         modelo = fields.String()
         fabricante = fields.String()
         status = fields.Boolean()
+        is_adm = fields.Boolean()
