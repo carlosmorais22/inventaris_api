@@ -7,7 +7,8 @@ import urllib.parse
 app = Flask(__name__) 
 
 # string de conexão com o banco de dados
-host = 'testes.patrimonio.uerr.edu.br'
+# host = 'testes.patrimonio.uerr.edu.br'
+host = 'patrimonio.uerr.edu.br'
 usuario = 'sigpat'
 senha = '@@sigp@t200'
 database = 'sigpat'

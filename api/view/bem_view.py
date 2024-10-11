@@ -18,18 +18,21 @@ class ListarBem(Resource):
     
 class RecuperarBem(Resource):
     def get(self, tipo, texto):
-        lista = bem_service.recuperarPorSetor(texto.upper())
+        lista = []
+        if tipo=="setor":
+            lista = bem_service.recuperarPorSetor(texto.upper())
         if tipo=="tombo":
             lista = bem_service.recuperarPorTombo(texto.upper())
         if tipo=="descricao":
             lista = bem_service.recuperarPorDescricao(texto.upper())
 
+        # print(lista)
         resultado = []
-
 
         for item in lista:
             resultado.append(item.to_dict())
             
+        # print(resultado)
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
