@@ -1,5 +1,4 @@
-from flask import request, jsonify
-import uuid
+from flask import jsonify
 
 from ..app import db
 from ..models.inventario_model import InventarioModel

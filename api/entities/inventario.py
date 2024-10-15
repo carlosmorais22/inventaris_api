@@ -1,6 +1,6 @@
 class Inventario():
 
-    def __init__(self, ano, bem, estado, situacao, plaqueta, observacao, cadastrado_por, situacao_observacao, tem_numero_serie, numero_serie, created_at=None, updated_at=None, deleted_at=None, id=None):
+    def __init__(self, ano, bem, estado, situacao, plaqueta, observacao, cadastrado_por, situacao_observacao, tem_numero_serie, numero_serie, dispositivo, created_at=None, updated_at=None, deleted_at=None, id=None):
         self.__id = id
         self.__ano = ano
         self.__bem = bem
@@ -12,6 +12,7 @@ class Inventario():
         self.__situacao_observacao = situacao_observacao
         self.__tem_numero_serie = tem_numero_serie
         self.__numero_serie = numero_serie
+        self.__dispositivo = dispositivo
         self.__created_at = created_at
         self.__updated_at = updated_at
         self.__deleted_at = deleted_at
@@ -105,6 +106,14 @@ class Inventario():
         self.__numero_serie = numero_serie
 
     @property
+    def dispositivo(self):
+        return self.__dispositivo
+
+    @dispositivo.setter
+    def dispositivo(self, dispositivo):
+        self.__dispositivo = dispositivo
+
+    @property
     def created_at(self):
         return self.__created_at
 
@@ -141,6 +150,7 @@ class Inventario():
             "situacao_observacao" : self.__situacao_observacao,
             "tem_numero_serie" : self.tem_numero_serie,
             "numero_serie" : self.__numero_serie,
+            "dispositivo" : self.__dispositivo,
             "created_at" : self.__created_at,
             "updated_at" : self.__updated_at,
             "deleted_at" : self.__deleted_at,

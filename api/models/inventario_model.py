@@ -24,6 +24,7 @@ class InventarioModel(db.Model):
     situacao_observacao = db.Column(db.String, nullable=True)
     tem_numero_serie = db.Column(db.SmallInteger, nullable=False, server_default="false")
     numero_serie = db.Column(db.String, nullable=True)
+    dispositivo = db.Column(db.String, nullable=True)
 
     def __init__(self, inventario):
         self.ano=inventario.ano,
@@ -36,6 +37,7 @@ class InventarioModel(db.Model):
         self.situacao_observacao=inventario.situacao_observacao,
         self.tem_numero_serie=inventario.tem_numero_serie,
         self.numero_serie=inventario.numero_serie
+        self.dispositivo=inventario.dispositivo
 
     def to_dict(self):
         return {
@@ -50,6 +52,7 @@ class InventarioModel(db.Model):
             "situacao_observacao" : self.situacao_observacao,
             "tem_numero_serie" : self.tem_numero_serie,
             "numero_serie" : self.numero_serie,
+            "dispositivo" : self.dispositivo,
             "created_at" : self.created_at,
             "updated_at" : self.updated_at,
             "deleted_at" : self.deleted_at,

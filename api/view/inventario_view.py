@@ -32,6 +32,7 @@ class ListarIncluirInventario(Resource):
                             situacao_observacao = request.json['situacao_observacao'],
                             tem_numero_serie    = request.json['tem_numero_serie'],
                             numero_serie        = request.json['numero_serie'],
+                            dispositivo         = request.json['dispositivo'],
                         )
             
             resultado = inventario_service.create(new)

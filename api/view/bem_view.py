@@ -32,7 +32,7 @@ class RecuperarBem(Resource):
         for item in lista:
             resultado.append(item.to_dict())
             
-        # print(resultado)
+        print(resultado)
         return make_response(jsonify(resultado), 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})

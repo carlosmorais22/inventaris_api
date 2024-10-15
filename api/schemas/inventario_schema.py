@@ -21,6 +21,7 @@ class InventarioSchema(ma.SQLAlchemyAutoSchema):
         situacao_observacao = fields.String()
         tem_numero_serie = fields.Boolean()
         numero_serie = fields.String()
+        dispositivo = fields.String()
         created_at = fields.DateTime()
         updated_at = fields.DateTime()
         deleted_at = fields.DateTime()
