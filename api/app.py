@@ -1,8 +1,10 @@
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_restful import Api
 import urllib.parse
+
+from sqlalchemy import text
 
 app = Flask(__name__) 
 
@@ -50,10 +52,41 @@ from .view import ano_view
 from .view import setor_view
 from .view import dispositivo_view
 
+def mac_from_ip(ip):
+    arp_table = get_arp_table()
+
+    for entry in arp_table:
+        if entry['IP address'] == ip:
+            return entry['HW address']
+    return None
+
 # Rota para teste de conexão
 @app.route("/")
 def hello():
-    return "<h1 style='color:blue'></h1>"
+    with db.session.connection() as connection:
+        connection.execute(text('SET SESSION "app.user_name" = ''sigpat''').execution_options(autocommit=True))
+        connection.execute(text('SET SESSION "app.ip_address" = ''ip_address''').execution_options(autocommit=True))
+        connection.execute(text('SET SESSION "app.mac_address" = ''mac_address''').execution_options(autocommit=True))
+
+        result = connection.execute(text("select current_setting('app.user_name') as col1, current_setting('app.ip_address') as col2, current_setting('app.mac_address') as col3").execution_options(autocommit=True))
+        for r in result:
+            print(r[0]) # Access by positional index
+            print(r[1]) # Access by positional index
+            print(r[2]) # Access by positional index
+        result = connection.execute(text("update inventaris.teste set texto='321'").execution_options(autocommit=True))
+        connection.commit()
+        print("######################################")
+        print(result)
+        print("######################################")
+        result = connection.execute(text("select current_setting('app.user_name') as col1, current_setting('app.ip_address') as col2, current_setting('app.mac_address') as col3").execution_options(autocommit=True))
+        for r in result:
+            print(r[0]) # Access by positional index
+            print(r[1]) # Access by positional index
+            print(r[2]) # Access by positional index
+            return r[0]
+
+
+    return ""
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
