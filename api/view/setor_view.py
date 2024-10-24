@@ -12,7 +12,6 @@ class ListrSetor(Resource):
         resultado = []
 
         for item in lista:
-            print(item)
             resultado.append(item.to_dict())
             
         return make_response(jsonify(resultado), 201)

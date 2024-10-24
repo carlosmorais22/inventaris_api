@@ -2,6 +2,7 @@ from ..app import app, api
 from flask_restful import Resource
 from flask import make_response, jsonify, request
 from flask_cors import CORS
+from datetime import datetime
 
 from ..entities.inventario import Inventario
 from ..services import inventario_service
@@ -33,6 +34,8 @@ class ListarIncluirInventario(Resource):
                             tem_numero_serie    = request.json['tem_numero_serie'],
                             numero_serie        = request.json['numero_serie'],
                             dispositivo         = request.json['dispositivo'],
+                            created_at          = datetime.now(),
+                            updated_at          = datetime.now(),
                         )
             
             resultado = inventario_service.create(new)

@@ -53,7 +53,7 @@ from .view import dispositivo_view
 # Rota para teste de conexão
 @app.route("/")
 def hello():
-    return "<h1 style='color:blue'>Olá carinha da UERR 007</h1>"
+    return "<h1 style='color:blue'></h1>"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
