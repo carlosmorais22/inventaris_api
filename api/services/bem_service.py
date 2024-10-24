@@ -18,9 +18,9 @@ def recuperar(id):
     response = BemModel.query.get(id).toDict()
     return jsonify(response)
 
-def recuperarPorSetor(texto):
+def recuperarPorSetor(orgao, texto):
     search = "%{}%".format(texto)
-    return BemModel.query.filter(BemModel.setor.ilike(search)).order_by(BemModel.descricao.asc())
+    return BemModel.query.filter_by(orgao=orgao).filter(BemModel.setor.ilike(search)).order_by(BemModel.descricao.asc())
 
 def recuperarPorTombo(texto):
     search = "%{}%".format(texto)

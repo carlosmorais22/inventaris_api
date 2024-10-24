@@ -17,16 +17,16 @@ class ListarBem(Resource):
         return make_response(jsonify(resultado), 201)
     
 class RecuperarBem(Resource):
-    def get(self, tipo, texto):
+    def get(self, orgao, tipo, texto):
         lista = []
         if tipo=="setor":
-            lista = bem_service.recuperarPorSetor(texto.upper())
+            lista = bem_service.recuperarPorSetor(orgao, texto.upper())
         if tipo=="tombo":
             lista = bem_service.recuperarPorTombo(texto.upper())
         if tipo=="descricao":
             lista = bem_service.recuperarPorDescricao(texto.upper())
 
-        # print(lista)
+        print(lista)
         resultado = []
 
         for item in lista:
@@ -37,4 +37,4 @@ class RecuperarBem(Resource):
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api.add_resource(ListarBem, '/api/bem')
-api.add_resource(RecuperarBem, '/api/bem/<string:tipo>/<string:texto>')
+api.add_resource(RecuperarBem, '/api/bem/<string:orgao>/<string:tipo>/<string:texto>')

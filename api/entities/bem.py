@@ -1,8 +1,9 @@
 class Bem():
 
-    def __init__(self, descricao, setor, tombo, conta, estado, estado_descricao, valor, valor_remanescente, numero_serie, data, data_aquisicao, ativo, inventariado=None, id=None):
+    def __init__(self, orgao, setor, tombo, descricao, conta, estado, estado_descricao, valor, valor_remanescente, numero_serie, data, data_aquisicao, ativo, inventariado=None, id=None):
 
         self.__id = id
+        self.__orgao = orgao
         self.__setor = setor
         self.__tombo = tombo
         self.__descricao = descricao
@@ -24,6 +25,15 @@ class Bem():
     @id.setter
     def id(self, id):
         self.__id = id
+
+    @property
+    def orgao(self):
+        return self.__orgao
+
+    @orgao.setter
+    def orgao(self, orgao):
+        self.__orgao = orgao
+
 
     @property
     def setor(self):

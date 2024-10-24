@@ -10,6 +10,7 @@ from ..schemas.dispositivo_schema import DispositivoSchema
 class ListarIncluirEditarDispositivo(Resource):
     def get(self):
         lista = dispositivo_service.list()
+        print(lista)
 
         resultado = []
 
@@ -26,6 +27,7 @@ class ListarIncluirEditarDispositivo(Resource):
                             cpf        = request.json['cpf'],
                             modelo     = request.json['modelo'],
                             fabricante = request.json['fabricante'],
+                            orgao      = request.json['orgao'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
                         )
@@ -48,6 +50,7 @@ class ListarIncluirEditarDispositivo(Resource):
                             cpf        = request.json['cpf'],
                             modelo     = request.json['modelo'],
                             fabricante = request.json['fabricante'],
+                            orgao      = request.json['orgao'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
                         )

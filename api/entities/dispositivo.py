@@ -1,11 +1,12 @@
 class Dispositivo():
 
-    def __init__(self, id, nome, cpf, modelo, fabricante, status, is_adm):
+    def __init__(self, id, nome, cpf, modelo, fabricante, orgao, status, is_adm):
         self.__id = id
         self.__nome = nome
         self.__cpf = cpf
         self.__modelo = modelo
         self.__fabricante = fabricante
+        self.__orgao = orgao
         self.__status = status
         self.__is_adm = is_adm
 
@@ -48,6 +49,14 @@ class Dispositivo():
     @fabricante.setter
     def fabricante(self, fabricante):
         self.__fabricante = fabricante
+
+    @property
+    def orgao(self):
+        return self.__orgao
+
+    @orgao.setter
+    def orgao(self, orgao):
+        self.__orgao = orgao
 
     @property
     def status(self):
