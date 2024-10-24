@@ -22,11 +22,10 @@ class RecuperarBem(Resource):
         if tipo=="setor":
             lista = bem_service.recuperarPorSetor(orgao, texto.upper())
         if tipo=="tombo":
-            lista = bem_service.recuperarPorTombo(texto.upper())
+            lista = bem_service.recuperarPorTombo(orgao, texto.upper())
         if tipo=="descricao":
-            lista = bem_service.recuperarPorDescricao(texto.upper())
+            lista = bem_service.recuperarPorDescricao(orgao, texto.upper())
 
-        print(lista)
         resultado = []
 
         for item in lista:

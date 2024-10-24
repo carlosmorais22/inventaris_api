@@ -14,7 +14,7 @@ class BemModel(db.Model):
     conta = db.Column(db.String(12), nullable=False)
     estado = db.Column(db.String(7), nullable=False)
     estado_descricao = db.Column(db.String(7), nullable=False)
-    valor = db.Column(db.Numeric(12,2), nullable=False)
+    valor = db.Column(db.String, nullable=False)
     valor_remanescente = db.Column(db.Numeric(12,4), nullable=True)
     numero_serie = db.Column(db.String(30), nullable=False, unique=True)
     data = db.Column(db.DateTime, nullable=True)
@@ -26,6 +26,10 @@ class BemModel(db.Model):
         self.Bem = Bem
 
     def to_dict(self):
+        print("------------------------------------------------------");
+        print(self)
+        print("------------------------------------------------------");
+
         return {
             "id" : self.id, 
             "orgao" : self.orgao,
