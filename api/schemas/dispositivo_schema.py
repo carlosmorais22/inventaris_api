@@ -16,6 +16,5 @@ class DispositivoSchema(ma.SQLAlchemyAutoSchema):
         cpf = fields.String()
         modelo = fields.String()
         fabricante = fields.String()
-        orgao = fields.String()
         status = fields.Boolean()
         is_adm = fields.Boolean()

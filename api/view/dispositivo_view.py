@@ -27,7 +27,6 @@ class ListarIncluirEditarDispositivo(Resource):
                             cpf        = request.json['cpf'],
                             modelo     = request.json['modelo'],
                             fabricante = request.json['fabricante'],
-                            orgao      = request.json['orgao'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
                         )
@@ -50,7 +49,6 @@ class ListarIncluirEditarDispositivo(Resource):
                             cpf        = request.json['cpf'],
                             modelo     = request.json['modelo'],
                             fabricante = request.json['fabricante'],
-                            orgao      = request.json['orgao'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
                         )
@@ -71,6 +69,7 @@ class RecuperarDispositivo(Resource):
         if item != None:
             return make_response(item, 201)
         return make_response({}, 201)
+
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api.add_resource(ListarIncluirEditarDispositivo, '/api/dispositivo')

@@ -11,7 +11,6 @@ class DispositivoModel(db.Model):
     cpf = db.Column(db.String(11), nullable=False, unique=True)
     modelo = db.Column(db.String(30), nullable=False)
     fabricante = db.Column(db.String(30), nullable=False)
-    orgao = db.Column(db.String(30), nullable=False)
     status = db.Column(db.Boolean, nullable=False)
     is_adm = db.Column(db.Boolean, nullable=False)
 
@@ -21,7 +20,6 @@ class DispositivoModel(db.Model):
         self.cpf=dispositivo.cpf,
         self.modelo=dispositivo.modelo,
         self.fabricante=dispositivo.fabricante,
-        self.orgao=dispositivo.orgao
         self.status=dispositivo.status
         self.is_adm=dispositivo.is_adm
 
@@ -32,7 +30,6 @@ class DispositivoModel(db.Model):
             "cpf" : self.cpf,
             "modelo" : self.modelo,
             "fabricante" : self.fabricante,
-            "orgao" : self.orgao,
             "status" : self.status,
             "is_adm" : self.is_adm,
         }

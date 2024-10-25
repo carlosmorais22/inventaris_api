@@ -8,7 +8,7 @@ class SetorModel(db.Model):
 
     id    = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     nome = db.Column(db.String, nullable=False)
-    sigla = db.Column(db.Boolean, nullable=False)
+    sigla = db.Column(db.String, nullable=False)
 
     def __init__(self, Setor):
         self.Setor = Setor

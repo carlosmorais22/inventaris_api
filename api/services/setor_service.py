@@ -10,6 +10,7 @@ def list():
         return  f"Erro: {e}"
     return lista
 
+
 def recuperar(id):
     response = SetorModel.query.get(id).toDict()
     return jsonify(response)

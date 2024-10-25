@@ -12,4 +12,4 @@ class SetorSchema(ma.SQLAlchemyAutoSchema):
         include_fk = True
 
         nome = fields.String()
-        sigla = fields()
+        sigla = fields.String()

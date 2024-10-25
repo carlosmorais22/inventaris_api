@@ -18,7 +18,7 @@ class Setor():
         return self.__nome
 
     @nome.setter
-    def cpf(self, nome):
+    def nome(self, nome):
         self.__nome = nome
 
     @property
@@ -26,5 +26,6 @@ class Setor():
         return self.__sigla
 
     @sigla.setter
-    def cpf(self, sigla):
+    def sigla(self, sigla):
         self.__sigla = sigla
+

@@ -11,7 +11,6 @@ class BemSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         include_fk = True
 
-        orgao = fields.String()
         setor = fields.String()
         tombo = fields.String()
         descricao = fields.String()

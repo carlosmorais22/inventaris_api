@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 from ..services import setor_service
 
-class ListrSetor(Resource):
+class ListarSetor(Resource):
     def get(self):
         lista = setor_service.list()
 
@@ -14,7 +14,9 @@ class ListrSetor(Resource):
         for item in lista:
             resultado.append(item.to_dict())
             
+        # print(resultado)
         return make_response(jsonify(resultado), 201)
 
+
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-api.add_resource(ListrSetor, '/api/setor')
+api.add_resource(ListarSetor, '/api/setor')
