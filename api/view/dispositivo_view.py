@@ -28,6 +28,7 @@ class ListarIncluirEditarDispositivo(Resource):
                             fabricante = request.json['fabricante'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
+                            orgao      = 'UERR' if request.json['orgao'] != None else request.json['orgao'],
                         )
             
             resultado = dispositivo_service.create(new)
@@ -50,6 +51,7 @@ class ListarIncluirEditarDispositivo(Resource):
                             fabricante = request.json['fabricante'],
                             status     = request.json['status'],
                             is_adm     = request.json['is_adm'],
+                            orgao      = 'UERR' if request.json['orgao'] != None else request.json['orgao'],
                         )
             
             resultado = dispositivo_service.update(new)

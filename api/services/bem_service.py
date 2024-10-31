@@ -18,10 +18,10 @@ def recuperar(id):
     response = BemModel.query.get(id).toDict()
     return jsonify(response)
 
-def recuperarPorSetor(texto):
+def recuperarPorSetor(texto, orgao = 'UERR'):
     try:
         search = "%{}%".format(texto)
-        lista = BemModel.query.filter(BemModel.setor.ilike(search)).order_by(BemModel.descricao.asc()).all()
+        lista = BemModel.query.filter_by(orgao=orgao).filter(BemModel.setor.ilike(search)).order_by(BemModel.descricao.asc()).all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:
@@ -29,10 +29,10 @@ def recuperarPorSetor(texto):
     return lista
 
 
-def recuperarPorTombo(texto):
+def recuperarPorTombo(texto, orgao = 'UERR'):
     try:
         search = "%{}%".format(texto)
-        lista = BemModel.query.filter(BemModel.tombo.ilike(search)).order_by(BemModel.descricao.asc()).all()
+        lista = BemModel.query.filter_by(orgao=orgao).filter(BemModel.tombo.ilike(search)).order_by(BemModel.descricao.asc()).all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:
@@ -40,10 +40,10 @@ def recuperarPorTombo(texto):
     return lista
  
 
-def recuperarPorDescricao(texto):
+def recuperarPorDescricao(texto, orgao = 'UERR'):
     try:
         search = "%{}%".format(texto)
-        lista = BemModel.query.filter(BemModel.descricao.ilike(search)).order_by(BemModel.descricao.asc()).all()
+        lista = BemModel.query.filter_by(orgao=orgao).filter(BemModel.descricao.ilike(search)).order_by(BemModel.descricao.asc()).all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:

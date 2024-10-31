@@ -13,6 +13,7 @@ class DispositivoModel(db.Model):
     fabricante = db.Column(db.String(30), nullable=False)
     status = db.Column(db.Boolean, nullable=False)
     is_adm = db.Column(db.Boolean, nullable=False)
+    orgao = db.Column(db.String, nullable=False)
 
     def __init__(self, dispositivo):
         self.id=dispositivo.id,
@@ -22,6 +23,7 @@ class DispositivoModel(db.Model):
         self.fabricante=dispositivo.fabricante,
         self.status=dispositivo.status
         self.is_adm=dispositivo.is_adm
+        self.orgao=dispositivo.orgao
 
     def to_dict(self):
         return {
@@ -32,4 +34,5 @@ class DispositivoModel(db.Model):
             "fabricante" : self.fabricante,
             "status" : self.status,
             "is_adm" : self.is_adm,
+            "orgao" : self.orgao,
         }

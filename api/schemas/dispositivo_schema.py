@@ -18,3 +18,4 @@ class DispositivoSchema(ma.SQLAlchemyAutoSchema):
         fabricante = fields.String()
         status = fields.Boolean()
         is_adm = fields.Boolean()
+        orgao = fields.String()

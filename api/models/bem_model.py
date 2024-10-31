@@ -7,6 +7,7 @@ class BemModel(db.Model):
     __table_args__ = {'schema': 'inventaris'}
 
     id    = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    orgao = db.Column(db.String(100), nullable=False)
     setor = db.Column(db.String(200), nullable=False)
     tombo = db.Column(db.String(50), nullable=False, unique=True)
     descricao = db.Column(db.String, nullable=False)
@@ -28,6 +29,7 @@ class BemModel(db.Model):
         return {
             "id" : self.id, 
             "setor" : self.setor,
+            "orgao" : self.orgao,
             "tombo" : self.tombo,
             "descricao" : self.descricao,
             "conta" : self.conta,
