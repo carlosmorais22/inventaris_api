@@ -10,7 +10,6 @@ from ..schemas.dispositivo_schema import DispositivoSchema
 class ListarIncluirEditarDispositivo(Resource):
     def get(self):
         lista = dispositivo_service.list()
-        print(lista)
 
         resultado = []
 
@@ -70,7 +69,14 @@ class RecuperarDispositivo(Resource):
             return make_response(item, 201)
         return make_response({}, 201)
 
+class RecuperarDispositivoV2(Resource):
+    def get(self, id, modelo, fabricante):
+        item = dispositivo_service.recuperarPorIdMotivoFabricante(id, modelo, fabricante)
+        if item != None:
+            return make_response(item, 201)
+        return make_response({}, 201)
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api.add_resource(ListarIncluirEditarDispositivo, '/api/dispositivo')
 api.add_resource(RecuperarDispositivo, '/api/dispositivo/<string:id>')
+api.add_resource(RecuperarDispositivoV2, '/api/dispositivo/<string:id>/<string:modelo>/<string:fabricante>')

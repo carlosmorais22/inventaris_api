@@ -19,6 +19,12 @@ def recuperar(id):
         return response.to_dict()
     return None;
 
+def recuperarPorIdMotivoFabricante(id, modelo, fabricante):
+    response = DispositivoModel.query.filter_by(id=id).filter_by(modelo=modelo).filter_by(fabricante=fabricante).first()
+    if (response != None):
+        return response.to_dict()
+    return None;
+
 def create(item):
     model = DispositivoModel(item)
 
