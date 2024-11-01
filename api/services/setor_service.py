@@ -1,9 +1,9 @@
 from flask import jsonify
 from ..models.setor_model import SetorModel
 
-def list():
+def list(orgao='UERR'):
     try:
-        lista = SetorModel.query.all()
+        lista = SetorModel.query.filter_by(orgao=orgao).all()
     except UnicodeDecodeError as e:
         return  f"Erro: {e}"
     except Exception as e:

@@ -9,6 +9,7 @@ class SetorModel(db.Model):
     id    = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
     nome = db.Column(db.String, nullable=False)
     sigla = db.Column(db.String, nullable=False)
+    orgao = db.Column(db.String, nullable=False)
 
     def __init__(self, Setor):
         self.Setor = Setor
@@ -17,5 +18,6 @@ class SetorModel(db.Model):
         return {
             "id" : self.id, 
             "nome" : self.nome,
-            "sigla" : self.sigla
+            "sigla" : self.sigla,
+            "orgao" : self.orgao
         }

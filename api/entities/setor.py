@@ -1,9 +1,10 @@
 class Setor():
 
-    def __init__(self, nome, sigla, id=None):
+    def __init__(self, nome, sigla, orgao, id=None):
         self.__id = id
         self.__nome = nome
         self.__sigla = sigla
+        self.__orgao = orgao
 
     @property
     def id(self):
@@ -28,4 +29,12 @@ class Setor():
     @sigla.setter
     def sigla(self, sigla):
         self.__sigla = sigla
+
+    @property
+    def orgao(self):
+        return self.__orgao
+
+    @orgao.setter
+    def orgao(self, orgao):
+        self.__orgao = orgao
 
